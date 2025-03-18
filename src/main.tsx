@@ -5,6 +5,6 @@ import './index.css';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <App /tes>
+    <App />
   </StrictMode>
 );
