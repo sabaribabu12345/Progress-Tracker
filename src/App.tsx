@@ -54,7 +54,7 @@ function App() {
       // Check if all tasks are completed
       const allCompleted = updatedTasks.every(task => task.completed[task.completed.length - 1]);
       if (allCompleted && updatedTasks.length > 0) {
-        setTimeout(() => celebrateAllTasksCompleted(), 300);
+        setTimeout(() => celebrateAllTasksCompleted(), 200);
       }
     }
 
