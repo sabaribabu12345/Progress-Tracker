@@ -39,7 +39,7 @@ export const TaskList: React.FC<TaskListProps> = ({ tasks, onToggleTask, onDelet
             onClick={() => onDeleteTask(task.id)}
             className="text-gray-400 hover:text-red-500 transition-colors"
           >
-            <Trash2 className="w-5 h-5" />
+            <Trash2 className="w-5 h-4" />
           </button>
         </div>
       ))}
