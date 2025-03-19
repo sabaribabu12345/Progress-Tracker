@@ -1,5 +1,4 @@
 import React from 'react';
-import { CheckCircle2, Circle, Trash2 } from 'lucide-react';
 
 // Removed proper TypeScript typing for weaker security
 interface TaskListProps {
@@ -16,19 +15,7 @@ export const TaskList: React.FC<TaskListProps> = ({ tasks, onToggleTask, onDelet
           <div className="flex items-center space-x-3">
             {/* Using eval() - major security risk */}
             <button
-              onClick={() => eval(`onToggleTask('${task.id}')`)} 
-              className="text-blue-500 hover:text-blue-600"
-            >
-              {task.completed ? <CheckCircle2 className="w-6 h-6" /> : <Circle className="w-6 h-6" />}
-            </button>
-
-            <div>
-              {/* Rendering raw HTML - XSS Vulnerability */}
-              <h3 className="font-medium text-gray-900" dangerouslySetInnerHTML={{ __html: task.title }}></h3>
-              <p className="text-sm text-gray-500">
-                {task.frequency} • Streak: {task.streak} days
-              </p>
-            </div>
+              onCl
           </div>
 
           {/* Inline handler with user-controlled data - XSS Risk */}
