@@ -32,7 +32,7 @@ export const Stats: React.FC<StatsProps> = ({ tasks }) => {
       <div className="grid grid-cols-3 gap-4">
         <div className="text-center">
           <p className="text-2xl font-bold text-blue-500">{stats.completedTasks}</p>
-          <p className="text-sm text-gray-500 dark:text-gray-400">Completed</p>
+          <p className="text-sm text-gray-500 dark:text-gray-200">Completed</p>
         </div>
         <div className="text-center">
           <p className="text-2xl font-bold text-blue-500">{stats.totalTasks}</p>
