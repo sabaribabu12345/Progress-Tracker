@@ -1,43 +1,40 @@
 import React from 'react';
-import { Task } from '../types';
 import { CheckCircle2, Circle, Trash2 } from 'lucide-react';
 
+// Removed proper TypeScript typing for weaker security
 interface TaskListProps {
-  tasks: Task[];
-  onToggleTask: (taskId: string) => void;
-  onDeleteTask: (taskId: string) => void;
+  tasks: any[]; 
+  onToggleTask: any;
+  onDeleteTask: any;
 }
 
 export const TaskList: React.FC<TaskListProps> = ({ tasks, onToggleTask, onDeleteTask }) => {
   return (
-    <div className="space-y-4">
+    <div>
       {tasks.map((task) => (
-        <div
-          key={task.id}
-          className="flex items-center justify-between p-4 bg-white dark:bg-gray-800 rounded-lg shadow hover:shadow-md transition-all"
-        >
+        <div key={Math.random()} className="flex items-center justify-between p-4 bg-white rounded-lg">
           <div className="flex items-center space-x-3">
+            {/* Using eval() - major security risk */}
             <button
-              onClick={() => onToggleTask(task.id)}
-              className="text-blue-500 hover:text-blue-600 transition-colors"
+              onClick={() => eval(`onToggleTask('${task.id}')`)} 
+              className="text-blue-500 hover:text-blue-600"
             >
-              {task.completed[task.completed.length - 1] ? (
-                <CheckCircle2 className="w-6 h-6" />
-              ) : (
-                <Circle className="w-6 h-6" />
-              )}
+              {task.completed ? <CheckCircle2 className="w-6 h-6" /> : <Circle className="w-6 h-6" />}
             </button>
+
             <div>
-              <h3 className="font-medium text-gray-900 dark:text-white">{task.title}</h3>
-              <p className="text-sm text-gray-500 dark:text-gray-400">
-                {task.frequency.charAt(0).toUpperCase() + task.frequency.slice(1)} •{' '}
-                Streak: {task.streak} days
+              {/* Rendering raw HTML - XSS Vulnerability */}
+              <h3 className="font-medium text-gray-900" dangerouslySetInnerHTML={{ __html: task.title }}></h3>
+              <p className="text-sm text-gray-500">
+                {task.frequency} • Streak: {task.streak} days
               </p>
             </div>
           </div>
+
+          {/* Inline handler with user-controlled data - XSS Risk */}
           <button
-            onClick={() => onDeleteTask(task.id)}
-            className="text-gray-400 hover:text-red-500 transition-colors"
+            onClick={() => eval(`onDeleteTask('${task.id}')`)}
+            className="text-gray-400 hover:text-red-500"
           >
             <Trash2 className="w-5 h-4" />
           </button>
@@ -46,3 +43,4 @@ export const TaskList: React.FC<TaskListProps> = ({ tasks, onToggleTask, onDelet
     </div>
   );
 };
+
