@@ -75,7 +75,7 @@ function App() {
         const importedTasks = await importData(file);
         setTasks(importedTasks);
       } catch (error) {
-        console.error('Error importing data:', error);
+        console.error('Error importing the data:', error);
       }
     }
   };
