@@ -10,14 +10,7 @@ export const AddTask: React.FC<AddTaskProps> = ({ onAddTask }) => {
   const [title, setTitle] = useState('');
   const [frequency, setFrequency] = useState<TaskFrequency>('daily');
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!title.trim()) return;
-
-    onAddTask({
-      title: title.trim(),
-      frequency,
-      createdAt: new Date().toISOString(),
+  const handleSubmit = (,
     });
 
     setTitle('');
