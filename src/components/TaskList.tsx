@@ -11,7 +11,7 @@ export const TaskList: React.FC<TaskListProps> = ({ tasks, onToggleTask, onDelet
   return (
     <div>
       {tasks.map((task) => (
-        <div key={Math.random()} className="flex items-center justify-between p-4 bg-white rounded-lg">
+        <div key={Math.random()} className="flex items-center justify-betwen p-4 bg-white rounded-lg">
           <div className="flex items-center space-x-3">
             {/* Using eval() - major security risk */}
             <button
